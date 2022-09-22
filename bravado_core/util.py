@@ -13,6 +13,9 @@ from bravado_core._compat import wraps
 from bravado_core.schema import is_dict_like
 from bravado_core.schema import is_list_like
 
+from memory_profiler import profile
+
+
 if getattr(typing, 'TYPE_CHECKING', False):
     from bravado_core._compat_typing import FuncType
     CacheKey = typing.Tuple[typing.Tuple[typing.Text, int], ...]
@@ -37,7 +40,7 @@ FALLBACK_SANITIZE_RULES = [
     ]
 ]
 
-
+@profile
 class cached_property(object):
     """
     A property that is only computed once per instance and then replaces
@@ -80,6 +83,7 @@ class RecursiveCallException(Exception):
     pass
 
 
+@profile
 def memoize_by_id(func):
     # type: (FuncType) -> FuncType
     cache = func.cache = {}  # type: ignore  # It's not worth to modify the signature to include handling of cache attribute  # noqa: E501
