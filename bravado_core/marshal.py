@@ -151,7 +151,7 @@ def marshal_model(swagger_spec, model_spec, model_value):
 
 
 @_decorators.wrap_recursive_call_exception
-@memoize_by_id
+# @memoize_by_id # This decorator cause leak memory
 def _get_marshaling_method(swagger_spec, object_schema, required=False):
     # type: (Spec, JSONDict, bool) -> MarshalingMethod
     """

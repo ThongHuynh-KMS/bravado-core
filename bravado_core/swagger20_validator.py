@@ -303,7 +303,7 @@ def ref_validator(
             validator.resolver.pop_scope()
 
 
-@memoize_by_id
+# @memoize_by_id # This decorator cause leak memory
 def get_validator_type(swagger_spec):
     # type: (Spec) -> typing.Type[ValidatorType]
     """Create a custom jsonschema validator for Swagger 2.0 specs.

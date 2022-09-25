@@ -146,7 +146,7 @@ def unmarshal_model(swagger_spec, model_spec, model_value):
 
 
 @_decorators.wrap_recursive_call_exception
-@memoize_by_id
+# @memoize_by_id # This decorator cause leak memory
 def _get_unmarshaling_method(swagger_spec, object_schema, is_nullable=True):
     # type: (Spec, JSONDict, bool) -> UnmarshalingMethod
     """
