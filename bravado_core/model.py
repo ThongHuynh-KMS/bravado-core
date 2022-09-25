@@ -344,6 +344,7 @@ class Model(object):
 
         if include_missing_properties is None:
             include_missing_properties = self._include_missing_properties
+
         # Create the attribute value dictionary
         # We need bypass the overloaded __setattr__ method
         # Note the name mangling!
