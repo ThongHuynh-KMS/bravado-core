@@ -335,13 +335,15 @@ class Model(object):
         """
         self.__init_from_dict(kwargs)
 
-    def __init_from_dict(self, dct, include_missing_properties=True):
+    def __init_from_dict(self, dct, include_missing_properties=None):
         """Initialize model from a dictionary of property values.
 
         :param dict dct: Dictionary of property values by name. They need not
             actually exist in :attr:`_properties`.
         """
 
+        if include_missing_properties is None:
+            include_missing_properties = self._include_missing_properties
         # Create the attribute value dictionary
         # We need bypass the overloaded __setattr__ method
         # Note the name mangling!
