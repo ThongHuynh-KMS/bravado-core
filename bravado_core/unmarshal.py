@@ -122,7 +122,7 @@ def unmarshal_model(swagger_spec, model_spec, model_value):
     return null_decorator(unmarshal_function)(model_value)
 
 
-# @_decorators.wrap_recursive_call_exception
+@_decorators.wrap_recursive_call_exception
 # @memoize_by_id
 def get_unmarshaling_method(swagger_spec, object_schema, is_nullable=True):
     # TODO: remove is_nullable support once https://github.com/Yelp/bravado-core/issues/335 is addressed
